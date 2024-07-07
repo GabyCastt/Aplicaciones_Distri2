@@ -39,6 +39,11 @@
 
 <body>
 
+    <!-- Botón para agregar productos -->
+    <div class="container mt-3">
+        <button class="btn btn-success mb-3" onclick="abrirModal('insertar')">Agregar Producto</button>
+    </div>
+
     <!-- Tabla Productos -->
     <table class="table table-bordered table-striped table-hover table-responsive">
         <thead class="table-light">
@@ -130,13 +135,14 @@
             if (modo === "insertar") {
                 document.getElementById("formProducto").reset();
                 document.getElementById("productoId").value = "";
+                $('#modalProducto').modal('show');
             } else if (modo === "editar") {
                 document.getElementById("productoId").value = producto.id;
                 document.getElementById("nombre").value = producto.nombre;
                 document.getElementById("precio").value = producto.precio;
                 document.getElementById("stock").value = producto.stock;
+                $('#modalProducto').modal('show');
             }
-            $('#modalProducto').modal('show');
         }
 
         document.getElementById("formProducto").onsubmit = function(event) {
